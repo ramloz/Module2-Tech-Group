@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 import data_structures.MyLinkedList;
@@ -47,7 +48,13 @@ public class MyLinkedListTest {
     @Test
     void get(){
         MyLinkedList list = new MyLinkedList<>();
+        assertThrows(IndexOutOfBoundsException.class, () ->{
+            String test = list.get(0).toString();
+        });
         list.add(1);
+        assertThrows(IndexOutOfBoundsException.class, () ->{
+            String test = list.get(1).toString();
+        });
         list.add("b");
         list.add('c');
         assertEquals(1, list.get(0));
@@ -96,6 +103,20 @@ public class MyLinkedListTest {
         assertTrue(list.isEmpty());
         list.add("fill");
         assertFalse(list.isEmpty());
+    }
+
+    @Test
+    void contains(){
+        MyLinkedList list = new MyLinkedList();
+        assertFalse(list.contains("Node 1", list));
+        list.add("Node 1");
+        assertTrue(list.contains("Node 1", list));
+        list.add(1);
+        list.add('a');
+        list.add(false);
+        assertTrue(list.contains(1, list));
+        assertTrue(list.contains('a', list));
+        assertTrue(list.contains(false, list));
     }
 
 

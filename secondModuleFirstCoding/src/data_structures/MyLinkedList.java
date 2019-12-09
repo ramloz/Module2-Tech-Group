@@ -64,10 +64,22 @@ public class MyLinkedList<T> implements List<T> {
         return false;
     }
 
+    public boolean contains(Object o, MyLinkedList list) {
+        if(size == 0) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            Object value = new Object();
+            value = list.get(i);
+            if(o == value){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public Iterator iterator() {
-
-
         return null;
     }
 
@@ -118,13 +130,11 @@ public class MyLinkedList<T> implements List<T> {
 
         Node<T> f = first;
 
-        // If index is bigger / smaller than Linked List size throw IndexOutOfBounds
-        if (index > size || index < 0){
+        if (index >= size || index < 0){
             throw new IndexOutOfBoundsException();
         }
 
-
-        // Index Less than size and is not the first or last node.
+        // When the index is part of a value inside the List and is not the first or the last
         if (index < size && index > 0) {
             for (int i = 0; i < index; i++) {
                 f = f.next;
@@ -132,25 +142,15 @@ public class MyLinkedList<T> implements List<T> {
             return f.getValue();
         }
 
-        // If the Linked List is empty + Index = 0 return null
-        if (first == null && index == 0) {
+        // When the list is empty return null
+        if (first == null) {
             return null;
         }
 
-        // If Linked List is not empty and index = 0 return first value
+        // When the target value have the index of 0 and the list contains elements
         if (index == 0) {
-            f = first;
             return f.getValue();
         }
-
-        // If index = end of list
-        if (index == size) {
-            f = last;
-            return f.getValue();
-        }
-
-
-        // Return null if not found.
         return null;
 
     }
