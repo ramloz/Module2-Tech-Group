@@ -60,8 +60,16 @@ public class MyLinkedList<T> implements List<T> {
     }
 
     @Override
-    public boolean contains(Object o) {
+    public boolean contains(Object value) {
+        Node node = first;
+        while (node != null) {
+            if (node.getValue().equals(value)) {
+                return true;
+            }
+            node = node.getNext();
+        }
         return false;
+
     }
 
     public boolean contains(Object o, MyLinkedList list) {
@@ -82,6 +90,24 @@ public class MyLinkedList<T> implements List<T> {
     public Iterator iterator() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        String value = "[";
+        Node nodeAux = first;
+        while (nodeAux != null) {
+            if (nodeAux == last) {
+                value = value + nodeAux.getValue().toString();
+            } else {
+                value = value + nodeAux.getValue().toString() + ", ";
+
+            }
+
+            nodeAux = nodeAux.getNext();
+        }
+        return value + "]";
+    }
+
 
     @Override
     public Object[] toArray() {
@@ -107,7 +133,59 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public boolean remove(Object o) {
-        return false;
+
+
+        Node nodeAux1 = first;
+        Node nodeAux2 = null;
+        boolean deleted = false;
+        while(o.equals((first.getValue()))) {
+
+            if (nodeAux1.getNext() == null) {
+                if(o.equals(nodeAux1.getValue())) {
+                    first = null;
+                    last = null;
+                    size = 0;
+                    return true;
+                }
+            } else {
+                if(o.equals(nodeAux1.getValue())) {
+                    Node nodenext = nodeAux1.getNext();
+                    first = nodenext;
+                    size = size - 1;
+                    if (size == 1) {
+                        last = nodenext;
+                    }
+                    deleted = true;
+                }
+            }
+
+        }
+        nodeAux2 = nodeAux1;
+        nodeAux1 = nodeAux1.getNext();
+
+        while(nodeAux1.getNext() != null) {
+
+            if(o.equals(nodeAux1.getValue())){
+                Node nodenext = nodeAux1.getNext();
+                nodeAux2.setNext(nodenext);
+                size = size - 1;
+                deleted = true;
+            }
+            nodeAux2 = nodeAux1;
+            nodeAux1 = nodeAux1.getNext();
+        }
+        if(o.equals(nodeAux1.getValue())){
+            last = nodeAux2;
+            nodeAux2.setNext(null);
+            size = size - 1;
+            deleted = true;
+        }
+        if(deleted == true){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     @Override
@@ -122,7 +200,16 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public void clear() {
-
+        Node nodeAux = first;
+        for(int i =0; i< size;i++) {
+            Node aux = nodeAux.getNext();
+            nodeAux.setNext(null);
+            nodeAux.setValue(null);
+            nodeAux = aux;
+        }
+        size= 0;
+        last=null;
+        first=null;
     }
 
     @Override
