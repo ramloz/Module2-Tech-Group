@@ -288,15 +288,38 @@ public class MyLinkedListTest {
     @Test
     void contains(){
         MyLinkedList list = new MyLinkedList();
-        assertFalse(list.contains("Node 1", list));
+        assertFalse(list.contains("Node 1"));
         list.add("Node 1");
-        assertTrue(list.contains("Node 1", list));
+        assertTrue(list.contains("Node 1"));
         list.add(1);
         list.add('a');
         list.add(false);
-        assertTrue(list.contains(1, list));
-        assertTrue(list.contains('a', list));
-        assertTrue(list.contains(false, list));
+        assertTrue(list.contains(1));
+        assertTrue(list.contains('a'));
+        assertTrue(list.contains(false));
+    }
+
+    @Test
+    void positionedAdd(){
+        MyLinkedList list = new MyLinkedList();
+        assertThrows(IndexOutOfBoundsException.class, () ->{
+            list.add(1, "invalid");
+        });
+
+        list.add(0, "valid");
+        assertEquals("valid", list.getFirst().getValue());
+        assertEquals("valid", list.getLast().getValue());
+        assertEquals("valid", list.get(0));
+        list.add(0, "new_first");
+        assertEquals("new_first", list.getFirst().getValue());
+        assertEquals("new_first", list.get(0));
+        list.add(1, "now_valid");
+        assertEquals("now_valid", list.get(1));
+        assertEquals("valid", list.getLast().getValue());
+        list.add(1, "new_valid");
+        assertEquals("new_valid", list.get(1));
+        assertEquals("valid", list.getLast().getValue());
+        assertEquals("new_first", list.getFirst().getValue());
     }
 
 

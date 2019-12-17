@@ -72,20 +72,6 @@ public class MyLinkedList<T> implements List<T> {
 
     }
 
-    public boolean contains(Object o, MyLinkedList list) {
-        if(size == 0) {
-            return false;
-        }
-        for (int i = 0; i < size; i++) {
-            Object value = new Object();
-            value = list.get(i);
-            if(o == value){
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public Iterator iterator() {
         return null;
@@ -215,12 +201,11 @@ public class MyLinkedList<T> implements List<T> {
     @Override
     public T get(int index) {
 
-        Node<T> f = first;
-
-        if (index >= size || index < 0){
+        if (index >= size){
             throw new IndexOutOfBoundsException();
         }
 
+        Node<T> f = first;
         // When the index is part of a value inside the List and is not the first or the last
         if (index < size && index > 0) {
             for (int i = 0; i < index; i++) {
@@ -255,6 +240,46 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public void add(int index, Object element) {
+
+        if (index > size){
+            throw new IndexOutOfBoundsException();
+        }
+
+        Node nodeAux;
+        Node nodeAux2 = null;
+        Node <T>newNode = new Node(element);
+
+
+        if (index == 0){
+            if(this.first == null) {
+                first = newNode;
+                last = newNode;
+                size = size + 1;
+            }else{
+                nodeAux = this.first;
+                this.first = newNode;
+                newNode.setNext(nodeAux);
+                size = size + 1;
+            }
+        }else{
+            nodeAux = this.first;
+            int tracker = 0;
+            while(tracker < index){
+                if(nodeAux.getNext() == null) {
+                    nodeAux.setNext(newNode);
+                    this.last=newNode;
+                    size=size+1;
+                    tracker = tracker + 1;
+                }else{
+                    nodeAux2 = nodeAux;
+                    nodeAux = nodeAux.getNext();
+                    tracker = tracker + 1;
+                }
+            }
+            nodeAux2.setNext(newNode);
+            newNode.setNext(nodeAux);
+            size = size + 1;
+        }
 
     }
     @Override
