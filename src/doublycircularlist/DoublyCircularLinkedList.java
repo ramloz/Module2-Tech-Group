@@ -144,8 +144,9 @@ public class DoublyCircularLinkedList <E>{
                     return control;
                 }
             }
+            int i = 0;
 
-            for (int i = 0; i < size ; i++) {
+            while(size >= i) {
 
                 if (data == node.getValue()) {
                     nextNode.setPrevious(node.getPrevious());
@@ -168,6 +169,18 @@ public class DoublyCircularLinkedList <E>{
                     node = node.getNext();
                     nextNode = node.getNext();
                     prevNode = node.getPrevious();
+                }
+                i++;
+            }
+            if(node == last){
+                if (data == node.getValue()) {
+                    last = node.getPrevious();
+                    first.setPrevious(node.getPrevious());
+                    node.setNext(null);
+                    node.setPrevious(null);
+                    node.setValue(null);
+                    size--;
+                    control = true;
                 }
             }
             return control;
