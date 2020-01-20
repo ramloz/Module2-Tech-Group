@@ -1,11 +1,11 @@
 package data_structures;
 
-public class HashSet<T> {
+public class MyHashSet<T> {
     private DoublyCircularLinkedList<T>[] index;
     private Integer indexSize;
     private Integer size;
 
-    public HashSet(int indexSize){
+    public MyHashSet(int indexSize){
         this.indexSize = indexSize;
         this.index = new DoublyCircularLinkedList[indexSize];
         this.size = 0;

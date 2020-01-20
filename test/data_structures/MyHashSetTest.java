@@ -6,10 +6,10 @@ import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class HashSetTest {
+public class MyHashSetTest {
     @Test
     public void testAddMethodShouldIncreaseTheSizeOfTheList() {
-        HashSet<Integer> myHashSet = new HashSet<>(5);
+        MyHashSet<Integer> myHashSet = new MyHashSet<>(5);
 
         myHashSet.add(2);
         myHashSet.add(6);
@@ -19,7 +19,7 @@ public class HashSetTest {
     }
     @Test
     public void testConstainsShouldReturnTrueIfExists() {
-        HashSet<Integer> myHashSet = new HashSet<>(5);
+        MyHashSet<Integer> myHashSet = new MyHashSet<>(5);
 
         myHashSet.add(7);
         myHashSet.add(9);
