@@ -28,4 +28,17 @@ public class MyHashSetTest {
         assertFalse(myHashSet.contains(1));
         assertTrue(myHashSet.contains(9));
     }
+
+    @Test
+    public void testAddMethodShouldDuplicateTheSizeOfHashSet() {
+        MyHashSet<Integer> myHashSet = new MyHashSet<>(3);
+
+        myHashSet.add(2);
+        myHashSet.add(6);
+        myHashSet.add(10);
+        myHashSet.add(34);
+
+        assertEquals(4, myHashSet.size());
+        assertEquals(6, myHashSet.getIndexSize());
+    }
 }
