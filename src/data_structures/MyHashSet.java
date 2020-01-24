@@ -24,6 +24,10 @@ public class MyHashSet<T> {
         }
     }
 
+    public DoublyCircularLinkedList<T> getByIndex(int position){
+        return this.index[position];
+    }
+
     public int getHashCode(T value) {
         if (value instanceof String) {
             return value.toString().length();
@@ -38,9 +42,7 @@ public class MyHashSet<T> {
     public boolean add(T element) {
         int hashKey = getHashCode(element) % this.indexSize;
         if (contains(element, hashKey)) return false;
-        if (this.size == this.indexSize) {
-            this.reInsert();
-        }
+        if (this.size == this.indexSize) this.reInsert();
         DoublyCircularLinkedList<T> currentList = this.index[hashKey];
         currentList.add(element);
         this.size++;
