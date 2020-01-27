@@ -1,13 +1,11 @@
-package data_structures;
+package data_structures.doublycircularlist;
 
 public class DoublyCircularLinkedList<T> {
     private Node<T> first;
     private Node<T> last;
     private Integer size;
 
-    DoublyCircularLinkedList() {
-        this.first = null;
-        this.last = null;
+    public DoublyCircularLinkedList() {
         this.size = 0;
     }
 
