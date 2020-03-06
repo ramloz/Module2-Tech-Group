@@ -17,7 +17,7 @@ public class Node<T> {
 
     private void setKey(T key) { this.key = key; }
 
-    private T getValue() {
+    public T getValue() {
         return value;
     }
 

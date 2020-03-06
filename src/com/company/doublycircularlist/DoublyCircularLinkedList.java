@@ -51,9 +51,14 @@ public class DoublyCircularLinkedList<T> {
     }
 
     public String getDefinition(T key){
-        String result="";
-
-
+        String result="Not found";
+        Node<T> current = first;
+        while (current != null) {
+            if (current.getKey().equals(key)) {
+                result = current.getValue().toString();
+            }
+            current = current.getNext();
+        }
 
         return result;
     }
@@ -100,17 +105,5 @@ public class DoublyCircularLinkedList<T> {
         return this.last;
     }
 
-    /*@Override
-    public String toString() {
-        StringBuilder result = new StringBuilder("[");
-        Node<T> cursor = this.first;
-        while (cursor != null) {
-            result.append(cursor.getValue().toString());
-            if (cursor != this.last) {
-                result.append(", ");
-            }
-            cursor = cursor.getNext();
-        }
-        return result.append("]").toString();
-    }*/
+
 }

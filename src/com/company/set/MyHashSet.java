@@ -130,6 +130,19 @@ public class MyHashSet<T> {
         this.index = newIndex;
     }
 
+    public String getDefinition(T key){
+
+        int hashKey = getHashCode(key) % this.indexSize;
+
+        return getDefinition(this.index, key, hashKey);
+    }
+
+    public String getDefinition(DoublyCircularLinkedList[] array,  Object newKey, int hashKey){
+        DoublyCircularLinkedList currentList = array[hashKey];
+
+        return currentList.getDefinition(newKey);
+    }
+
     public int size() {
         return this.size;
     }

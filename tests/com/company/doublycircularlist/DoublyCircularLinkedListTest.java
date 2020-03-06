@@ -21,15 +21,7 @@ public class DoublyCircularLinkedListTest {
         assertEquals(3, myLinkedList.size());
     }
 
-    /*@Test
-    public void testToString() {
-        DoublyCircularLinkedList<String> myLinkedList = new DoublyCircularLinkedList<>();
 
-        myLinkedList.add("world");
-        myLinkedList.add("hello");
-        myLinkedList.add("gat");
-        assertEquals("[world, hello, gat]", myLinkedList.toString());
-    }*/
 
     @Test
     public void testGetMethodShouldReturnTheValueOfTheNodeOnTheSpecifiedIndex() {
@@ -42,6 +34,19 @@ public class DoublyCircularLinkedListTest {
         assertEquals("world", myLinkedList.get(0));
         assertEquals("people", myLinkedList.get(1));
         assertEquals("hello", myLinkedList.get(2));
+    }
+
+    @Test
+    public void testGetMethodShouldReturnTheDefinitionoftheIndex() {
+        DoublyCircularLinkedList<String> myLinkedList = new DoublyCircularLinkedList<>();
+
+        myLinkedList.add("world", "Our planet");
+        myLinkedList.add("people", "human beens");
+        myLinkedList.add("hello", "Common way to salutate");
+
+        assertEquals("Our planet", myLinkedList.getDefinition("world"));
+        assertEquals("human beens", myLinkedList.getDefinition("people"));
+        assertEquals("Common way to salutate", myLinkedList.getDefinition("hello"));
     }
 
     @Test

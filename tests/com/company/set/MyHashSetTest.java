@@ -95,6 +95,33 @@ public class MyHashSetTest {
     }
 
     @Test
+    public void testContainsStrings() {
+        MyHashSet<String> myHashSet = new MyHashSet<>(5);
+
+        myHashSet.addLf("car", "Ground method of transport");
+        myHashSet.addLf("Hello", "Common way to saludate");
+        myHashSet.addLf("Airplane", "An aerial method of transport");
+        myHashSet.addLf("People","Human Beens");
+
+        assertTrue(myHashSet.contains("car"));
+        assertTrue(myHashSet.contains("Hello"));
+        assertFalse(myHashSet.contains("Hola"));
+    }
+
+    @Test
+    public void testGetDefinition(){
+        MyHashSet<String> myHashSet = new MyHashSet<>(5);
+
+        myHashSet.add("car", "Ground method of transport");
+        myHashSet.add("Hello", "Common way to saludate");
+        myHashSet.add("Airplane", "An aerial method of transport");
+        myHashSet.add("People","Human Beens");
+
+        assertEquals("Ground method of transport", myHashSet.getDefinition("car"));
+        assertEquals("Not found", myHashSet.getDefinition("auto"));
+    }
+
+    @Test
     public void testRearrange() {
         MyHashSet<Integer> myHashSet = new MyHashSet<>(3);
 
