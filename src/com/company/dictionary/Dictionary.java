@@ -1,10 +1,6 @@
 package com.company.dictionary;
 
 
-
-import com.company.doublycircularlist.DoublyCircularLinkedList;
-import com.company.dictionary.MyLinkedHashMap;
-
 import java.util.LinkedHashMap;
 
 public class Dictionary<T,M>{
@@ -19,9 +15,6 @@ public class Dictionary<T,M>{
 
     public Dictionary() {this.init(INIT_ARRAY_SIZE);}
 
-    /*public Dictionary(int initArraySize) {
-        this.init(initArraySize);
-    }*/
 
     private void init(int indexSize) {
         this.indexSize = indexSize;

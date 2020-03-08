@@ -1,6 +1,5 @@
 package company.dictionary;
 
-import com.company.set.MyHashSet;
 import org.junit.Test;
 import com.company.dictionary.Dictionary;
 
@@ -17,7 +16,7 @@ public class DictionaryTest {
         myDictionary.addTerm("Plane", "Aerial transport");
         myDictionary.addTerm("On", "button to turn on");
         myDictionary.addTerm("book", "Source of printed information");
-        myDictionary.addTerm("Chemestry", "Branch of the science");
+        myDictionary.addTerm("Chemistry", "Branch of the science");
 
         assertEquals(6, myDictionary.getSize());
         assertEquals(0, myDictionary.get(0).size());
@@ -66,11 +65,11 @@ public class DictionaryTest {
         myDictionary.addTerm("Car", "Land transport");
         myDictionary.addTerm("dog", "a domestic animal");
         myDictionary.addTerm("Plane", "Aerial transport");
-        myDictionary.addTerm("Chemestry", "Branch of the science");
+        myDictionary.addTerm("Chemistry", "Branch of the science");
 
         assertEquals("Land transport", myDictionary.getDefinition("Car"));
         assertEquals("Aerial transport", myDictionary.getDefinition("Plane"));
-        assertEquals("Branch of the science", myDictionary.getDefinition("Chemestry"));
+        assertEquals("Branch of the science", myDictionary.getDefinition("Chemistry"));
         assertEquals("Not Found", myDictionary.getDefinition("Defect"));
     }
 
